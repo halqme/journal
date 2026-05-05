@@ -61,12 +61,20 @@ func main() {
 	if len(args) > 0 && !useEditor {
 		result = journal.AppendToSections(sections, timeValue, settings.Template, sameTime, strings.Join(args, " "))
 	} else {
-		var tmpContent string
-		if sameTime {
-			tmpContent = existingStr
-		} else {
-			tmpContent = existingStr + rendered + "\n"
+	var tmpContent string
+	if sameTime {
+		tmpContent = existingStr
+	} else {
+		// Ensure there's a blank line before the new heading (unless file is empty)
+		content := existingStr
+		if content != "" && !strings.HasSuffix(content, "\n") {
+			content += "\n"
 		}
+		if content != "" && !strings.HasSuffix(strings.TrimRight(content, "\n"), "\n\n") {
+			content += "\n"
+		}
+		tmpContent = content + rendered + "\n"
+	}
 		result, err = journal.OpenEditor(tmpContent, settings.Editor)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "error: %v\n", err)
