@@ -1,7 +1,6 @@
 package journal
 
 import (
-	"bytes"
 	"strings"
 
 	"github.com/yuin/goldmark"
@@ -12,16 +11,6 @@ import (
 type Section struct {
 	Heading string
 	Raw     string
-}
-
-func headingText(n *ast.Heading, source []byte) string {
-	var buf bytes.Buffer
-	for c := n.FirstChild(); c != nil; c = c.NextSibling() {
-		if t, ok := c.(*ast.Text); ok {
-			buf.Write(t.Segment.Value(source))
-		}
-	}
-	return buf.String()
 }
 
 func ParseMarkdown(src string) []Section {
