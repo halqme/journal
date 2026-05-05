@@ -30,7 +30,7 @@ func ConfigPath() (string, error) {
 func DefaultSettings() Settings {
 	home, _ := os.UserHomeDir()
 	return Settings{
-		HourFormat: "24", Path: filepath.Join(home, ".journal"),
+		HourFormat: "24", Path: filepath.Join(home, ".journal", "entries"),
 		Editor: "", Template: "## {time}\n",
 		DefaultProject: false, FileNameFormat: "02.md",
 		AutoCreateSettings: true,
@@ -52,7 +52,7 @@ func LoadSettings() (Settings, error) {
 	}
 	if s.Path == "" {
 		home, _ := os.UserHomeDir()
-		s.Path = filepath.Join(home, ".journal")
+		s.Path = filepath.Join(home, ".journal", "entries")
 	}
 	if strings.HasPrefix(s.Path, "~/") {
 		home, _ := os.UserHomeDir()

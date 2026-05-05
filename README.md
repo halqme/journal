@@ -39,7 +39,7 @@ vim "$(find $(journal -p --root)/entries -name '*.md' | fzf)"
 ```json
 {
   "hour_format": "24",
-  "path": "~/.journal",
+  "path": "~/.journal/entries",
   "editor": "",
   "template": "## {time}\n",
   "default_project": false,
@@ -53,7 +53,7 @@ vim "$(find $(journal -p --root)/entries -name '*.md' | fzf)"
 | Key | Description | Default |
 |-----|-------------|---------|
 | `hour_format` | Time format for headings | `"24"` (or `"12"`) |
-| `path` | Base directory for entries | `"~/.journal"` |
+| `path` | Base directory for entries | `"~/.journal/entries"` |
 | `editor` | Override `$EDITOR` env var | `""` (use env) |
 | `template` | Entry header template. `{time}` is replaced with the time value | `"## {time}\n"` |
 | `default_project` | Create entries in current directory by default | `false` |

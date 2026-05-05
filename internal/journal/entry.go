@@ -17,7 +17,7 @@ func EntryFile(basePath, hourFormat, fileNameFormat string) (file, timeValue str
 	} else {
 		timeStr = now.Format("15:04")
 	}
-	entryDir := filepath.Join(basePath, "entries", now.Format("2006"), now.Format("01"))
+	entryDir := filepath.Join(basePath, now.Format("2006"), now.Format("01"))
 	return filepath.Join(entryDir, now.Format(fileNameFormat)), timeStr
 }
 

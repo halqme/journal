@@ -15,8 +15,8 @@ func main() {
 	var useEditor, useProject, showRoot bool
 	flag.BoolVar(&useEditor, "e", false, "open $EDITOR")
 	flag.BoolVar(&useEditor, "editor", false, "open $EDITOR")
-	flag.BoolVar(&useProject, "p", false, "create entry in current directory (.journal/)")
-	flag.BoolVar(&useProject, "project", false, "create entry in current directory (.journal/)")
+	flag.BoolVar(&useProject, "p", false, "create entry in current directory (.journal/entries)")
+	flag.BoolVar(&useProject, "project", false, "create entry in current directory (.journal/entries)")
 	flag.BoolVar(&showRoot, "root", false, "print journal base path")
 	flag.Parse()
 
@@ -33,7 +33,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "error: cannot get current directory: %v\n", err)
 			os.Exit(1)
 		}
-		basePath = filepath.Join(cwd, ".journal")
+		basePath = filepath.Join(cwd, ".journal", "entries")
 	}
 
 	if showRoot {
