@@ -12,7 +12,7 @@ func TestDefaultSettings(t *testing.T) {
 	if s.HourFormat != "24" {
 		t.Errorf("expected hour_format '24', got %q", s.HourFormat)
 	}
-	if s.Template != "## {time}\n" {
+	if s.Template != "# {time}\n" {
 		t.Errorf("expected default template, got %q", s.Template)
 	}
 	if !s.AutoCreateSettings {
@@ -25,7 +25,7 @@ func TestSettings_JSONRoundTrip(t *testing.T) {
 		HourFormat:         "12",
 		Path:               "/custom/path",
 		Editor:             "nvim",
-		Template:           "## {time}\n---\n",
+		Template:           "# {time}\n---\n",
 		DefaultProject:     true,
 		FileNameFormat:     "2006-01-02.md",
 		AutoCreateSettings: false,
@@ -91,7 +91,7 @@ func TestSaveSettings(t *testing.T) {
 	s := Settings{
 		HourFormat: "12",
 		Path:       filepath.Join(tmpDir, ".journal"),
-		Template:   "## {time}\n",
+		Template:   "# {time}\n",
 	}
 
 	if err := SaveSettings(s); err != nil {

@@ -31,7 +31,7 @@ func DefaultSettings() Settings {
 	home, _ := os.UserHomeDir()
 	return Settings{
 		HourFormat: "24", Path: filepath.Join(home, ".journal", "entries"),
-		Editor: "", Template: "## {time}\n",
+		Editor: "", Template: "# {time}\n",
 		DefaultProject: false, FileNameFormat: "02.md",
 		AutoCreateSettings: true,
 	}

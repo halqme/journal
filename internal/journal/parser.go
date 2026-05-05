@@ -34,7 +34,7 @@ func ParseMarkdown(src string) []Section {
 
 	var headingPositions []int
 	for n := doc.FirstChild(); n != nil; n = n.NextSibling() {
-		if h, ok := n.(*ast.Heading); ok && h.Level == 2 {
+		if h, ok := n.(*ast.Heading); ok && h.Level == 1 {
 			headingPositions = append(headingPositions, n.Pos())
 		}
 	}
