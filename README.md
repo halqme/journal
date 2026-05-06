@@ -3,6 +3,16 @@
 CLI journal application for tracking daily entries with timestamps.
 Inspired by [Zed](https://github.com/zed-industries/zed)'s **journal** feature.
 
+## Installation
+
+### build from source
+
+```bash
+git clone https://github.com/halqme/journal.git
+cd journal/cmd/journal
+go install .
+```
+
 ## Usage
 
 ```bash
@@ -26,10 +36,10 @@ journal --root
 
 ```bash
 # Browse and open entries
-vim "$(find $(journal --root)/entries -name '*.md' | fzf)"
+vim "$(find $(journal --root) -name '*.md' | fzf)"
 
 # With project mode
-vim "$(find $(journal -p --root)/entries -name '*.md' | fzf)"
+vim "$(find $(journal -p --root) -name '*.md' | fzf)"
 ```
 
 ## Settings
@@ -41,7 +51,7 @@ vim "$(find $(journal -p --root)/entries -name '*.md' | fzf)"
   "hour_format": "24",
   "path": "~/.journal/entries",
   "editor": "",
-  "template": "## {time}\n",
+  "template": "# {time}\n",
   "default_project": false,
   "file_name_format": "02.md",
   "auto_create_settings": true
@@ -55,7 +65,7 @@ vim "$(find $(journal -p --root)/entries -name '*.md' | fzf)"
 | `hour_format` | Time format for headings | `"24"` (or `"12"`) |
 | `path` | Base directory for entries | `"~/.journal/entries"` |
 | `editor` | Override `$EDITOR` env var | `""` (use env) |
-| `template` | Entry header template. `{time}` is replaced with the time value | `"## {time}\n"` |
+| `template` | Entry header template. `{time}` is replaced with the time value | `"# {time}\n"` |
 | `default_project` | Create entries in current directory by default | `false` |
 | `file_name_format` | Entry filename format (Go time format) | `"02.md"` |
 | `auto_create_settings` | Auto-generate settings file on first run | `true` |
