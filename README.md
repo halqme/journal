@@ -64,15 +64,6 @@ vim "$(find $(journal -p --root)/entries -name '*.md' | fzf)"
 
 ```json
 // Default
-"template": "## {time}\n"
-// → ## 09:55
-
-// With separator
-"template": "## {time}\n---\n"
-// → ## 09:55
-//   ---
-
-// With date
-"template": "## {time} — Daily Journal\n"
-// → ## 09:55 — Daily Journal
+"template": "# {time}\n"
+// → # 09:55
 ```
